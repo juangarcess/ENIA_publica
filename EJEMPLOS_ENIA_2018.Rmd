@@ -1,0 +1,36 @@
+---
+title: "Trabajando con ENIA 2018"
+author: "Juan Garces"
+date: "2023-03-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Antecedentes
+
+Este documento presenta ejemplos de trabajo con la base de datos de la ENIA 2018 disponible al público en 
+<https://www.ine.gob.cl/estadisticas/economia/industria-manufacturera/estructura-de-la-industria>, sección Bases de Datos.
+
+Este desarrollo es estrictamente con fines ilustrativos, las salidas no corresponden a estadísticas oficiales, y los resultados son elaboración propia del autor a partir del trabajo con las bases de datos.
+
+## Lectura de Bases de datos
+
+La base de datos de la ENIA 2018 está disponible en formato MS Access y csv. En esta instancia, utilizaremos el formato csv.
+
+```{r Lectura BD, echo=TRUE, message=TRUE, warning=TRUE, paged.print=TRUE}
+base_enia_2018 <- read.delim("https://www.ine.gob.cl/docs/default-source/estructura-de-la-industria/bbdd/encuesta-nacional-industrial-anual/csv/base-enia-2018.csv")
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
