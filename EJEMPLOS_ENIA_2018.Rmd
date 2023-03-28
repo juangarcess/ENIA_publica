@@ -25,7 +25,25 @@ base_enia_2018 <- read.delim("https://www.ine.gob.cl/docs/default-source/estruct
 
 ```
 
-## Including Plots
+Veamos una parte de la base
+
+
+```{r HEAD ENIA, echo=TRUE, message=TRUE, warning=TRUE, paged.print=TRUE}
+head(base_enia_2018)
+```
+
+## Insumos importantes
+
+
+
+## Moneda en que lleva la contabilidad
+
+Según el formulario 
+
+
+
+
+## Valor agregado, Valor Bruto y Consumo Intermedio
 
 You can also embed plots, for example:
 
