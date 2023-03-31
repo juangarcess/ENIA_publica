@@ -16,39 +16,61 @@ Este documento presenta ejemplos de trabajo con la base de datos de la ENIA 2018
 
 Este desarrollo es estrictamente con fines ilustrativos, las salidas no corresponden a estadísticas oficiales, y los resultados son elaboración propia del autor a partir del trabajo con las bases de datos.
 
+
+
+
 ## Lectura de Bases de datos
 
 La base de datos de la ENIA 2018 está disponible en formato MS Access y csv. En esta instancia, utilizaremos el formato csv.
 
-```{r Lectura BD, echo=TRUE, message=TRUE, warning=TRUE, paged.print=TRUE}
+```{r Lectura BD, message=TRUE, warning=TRUE, include=FALSE, paged.print=TRUE}
+
+library(tidyverse)
+
 base_enia_2018 <- read.delim("https://www.ine.gob.cl/docs/default-source/estructura-de-la-industria/bbdd/encuesta-nacional-industrial-anual/csv/base-enia-2018.csv")
 
 ```
 
-Veamos una parte de la base
 
+El descriptor de la base de datos está aquí <https://www.ine.gob.cl/docs/default-source/estructura-de-la-industria/metadatos/encuesta-nacional-industrial-anual/descritpor-de-campos/descriptor-de-variables-enia-2018.xlsx>
+
+
+Veamos las caracteristicas de algunas variables
 
 ```{r HEAD ENIA, echo=TRUE, message=TRUE, warning=TRUE, paged.print=TRUE}
-head(base_enia_2018)
+str(base_enia_2018)
 ```
 
 ## Insumos importantes
 
+El descriptor de la base de datos está aquí <https://www.ine.gob.cl/docs/default-source/estructura-de-la-industria/metadatos/encuesta-nacional-industrial-anual/descritpor-de-campos/descriptor-de-variables-enia-2018.xlsx>
 
+Instructivo de uso de la Base de datos (ENIA 2019) está aquí: <https://www.ine.gob.cl/docs/default-source/estructura-de-la-industria/manuales/encuesta-nacional-industrial-anual/documentos/instructivo-de-uso-de-base-de-datos-enia-2019.pdf>
+
+El formulario de la ENIA 2018 está aquí <https://www.ine.gob.cl/docs/default-source/estructura-de-la-industria/formularios/encuesta-nacional-industrial-anual/formularios-y-anexos-2018.zip>.
 
 ## Moneda en que lleva la contabilidad
 
-Según el formulario 
+Según el descriptor de variables, la pregunta sobre moneda en que lleva contabiliudad es `A005`.
 
+Veamos qué resulta
+
+```{r echo=TRUE}
+moneda_contabilidad<-group_by(base_enia_2018, A005)
+
+moneda_contabilidad<-summarise(moneda_contabilidad, total_casos=n())
+
+moneda_contabilidad
+```
+De acuerdo con el formulario, el código 4 es pesos y el código 5, por lo tanto hay `r moneda_contabilidad$total_casos[1]` casos que llevan la contabilidad en Miles de pesos y `r moneda_contabilidad$total_casos[2]` que llevan la contabilidad en Miles de dólares.
+
+Analicemos esto en el caso de Biobío.
 
 
 
 ## Valor agregado, Valor Bruto y Consumo Intermedio
 
-You can also embed plots, for example:
+Veamos si r
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
