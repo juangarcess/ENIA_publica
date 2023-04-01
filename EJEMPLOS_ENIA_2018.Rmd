@@ -65,6 +65,23 @@ moneda_contabilidad
 De acuerdo con el formulario, el código 4 es pesos y el código 5, por lo tanto hay `r moneda_contabilidad$total_casos[1]` casos que llevan la contabilidad en Miles de pesos y `r moneda_contabilidad$total_casos[2]` que llevan la contabilidad en Miles de dólares.
 
 Analicemos esto en el caso de Biobío.
+```{r filtro biobio, echo=TRUE}
+enia_biobio<-filter(base_enia_2018, REGION==8)
+
+
+moneda_contabilidad_biobio<-group_by(enia_biobio, A005)
+
+moneda_contabilidad_biobio<-summarise(moneda_contabilidad_biobio, total_casos=n())
+
+moneda_contabilidad_biobio
+
+
+
+```
+
+
+En el caso de Biobío, se tienen `r moneda_contabilidad_biobio$total_casos[1]` casos que llevan la contabilidad en Miles de pesos y `r moneda_contabilidad_biobio$total_casos[2]` que llevan la contabilidad en Miles de dólares.
+
 
 
 
