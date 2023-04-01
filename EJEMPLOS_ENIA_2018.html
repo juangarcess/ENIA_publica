@@ -520,7 +520,27 @@ dólares.</p>
 </div>
 <div id="valor-agregado-valor-bruto-y-consumo-intermedio" class="section level2">
 <h2>Valor agregado, Valor Bruto y Consumo Intermedio</h2>
-<p>Veamos si r</p>
+<pre class="r"><code>enia_biobio&lt;-group_by(enia_biobio, CIIU4, A005)
+
+valor_agregado&lt;-summarise(enia_biobio, VBP=sum(K009), CI=sum(K010), VA=sum(K011))</code></pre>
+<pre><code>## `summarise()` has grouped output by &#39;CIIU4&#39;. You can override using the
+## `.groups` argument.</code></pre>
+<pre class="r"><code>valor_agregado</code></pre>
+<pre><code>## # A tibble: 74 x 5
+## # Groups:   CIIU4 [63]
+##    CIIU4  A005      VBP       CI       VA
+##    &lt;chr&gt; &lt;int&gt;    &lt;int&gt;    &lt;int&gt;    &lt;int&gt;
+##  1 1010      4 14976672  9006353  5970319
+##  2 1020      4 94285712 71804296 22481416
+##  3 1020      5  1634517   668393   966124
+##  4 1030      4  6563869  3274627  3289242
+##  5 1040      4  5548584  2923535  2625049
+##  6 1050      4 69263686 63427451  5836235
+##  7 1061      4 29900360 24361638  5538722
+##  8 1062      5    50468    42066     8403
+##  9 1071      4 31934069 17349404 14584665
+## 10 1071      5      746     3205    -2459
+## # ... with 64 more rows</code></pre>
 </div>
 
 

@@ -87,7 +87,16 @@ En el caso de Biobío, se tienen `r moneda_contabilidad_biobio$total_casos[1]` c
 
 ## Valor agregado, Valor Bruto y Consumo Intermedio
 
-Veamos si r
 
+
+```{r echo=TRUE}
+
+enia_biobio<-group_by(enia_biobio, CIIU4, A005)
+
+valor_agregado<-summarise(enia_biobio, VBP=sum(K009), CI=sum(K010), VA=sum(K011))
+
+
+
+```
 
 
